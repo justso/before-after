@@ -1,28 +1,51 @@
 * {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
 }
 html {
     font-size: 10pt;
     line-height: 1;
+    height: 100%;
 }
 body {
     background-color: #ddd;
+    border: 1px solid lime;
+    height: 100%;
     text-align: center;
 }
-img {
-    border: 1em groove pink;
-    box-sizing: content-box;
+.wrap {
+    background-color: black;
     border-radius: 3em;
     display: inline-block;
-}
-div {
-    background-color: black;
-    display: inline-block;
     margin: 1em auto;
+    min-width: 33em;
+    min-height: 33em;
     overflow: hidden;
-    border-radius: 1em;
+    position: relative;
+    padding: 1em;
+}
+.frame {
+    -webkit-filter: blur(4px);
+    border: 1em groove lavenderblush;
+    border-radius: 3em;
+    left: 0;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+.photo {
+    border-radius: 2em;
+    display: inline-block;
+    overflow: hidden;
+    margin: 0.2em;
+    position: relative;
+}
+
+/* FLOAT */
+.photo, img {
+    float: left;
 }
 
 
