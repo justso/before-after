@@ -2,7 +2,6 @@
 /*globals _, C, W, Globs, Util, jQuery,
         ROOT, */
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
-var Load = $.Deferred();
 
 var Main = (function ($) { // IIFE
     'use strict';
@@ -14,14 +13,28 @@ var Main = (function ($) { // IIFE
         inits: function () {
             ROOT.loaded();
             Main = self;
-            self.inited = true
+            self.inited = true;
+
             this.pic = $(this.pic);
+            abscent(this.pic);
+
             C.log('loaded', name, self, '\nDf', this);
         },
-        pic: '.photo',
+        pic: '.pwrap',
     };
     /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
     /// INTERNAL
+
+    function abscent(ele) {
+        var me = $(ele).wrap('<div>');
+        var my = me.parent();
+
+        me.css({ // force a definite size
+            height: me.outerHeight(),
+            width: me.outerWidth(),
+        }).addClass('centa');
+        my.addClass('cwrap');
+    }
 
     function _init() {
         if (self.inited) {
@@ -39,9 +52,10 @@ var Main = (function ($) { // IIFE
         init: _init,
     });
 
-    return Load.done(self.init);
+    return $.Deferred().done(self.init);
 }(jQuery));
-    $(Main.resolve);
+
+$(Main.resolve);
 
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 

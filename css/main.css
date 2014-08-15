@@ -10,11 +10,10 @@ html {
 }
 body {
     background-color: #ddd;
-    border: 1px solid lime;
     height: 100%;
     text-align: center;
 }
-.wrap {
+.pwrap {
     background-color: black;
     border-radius: 3em;
     display: inline-block;
@@ -23,7 +22,7 @@ body {
     min-height: 33em;
     overflow: hidden;
     position: relative;
-    padding: 1em;
+    padding: 0.75em;
 }
 .frame {
     -webkit-filter: blur(4px);
@@ -36,10 +35,10 @@ body {
     width: 100%;
 }
 .photo {
-    border-radius: 2em;
+    border-radius: 2.25em;
     display: inline-block;
-    overflow: hidden;
     margin: 0.2em;
+    overflow: hidden;
     position: relative;
 }
 
@@ -50,3 +49,17 @@ body {
 
 
 /* */
+  .cwrap {
+      border: 1px solid lime;
+      height: 90%;
+      position: relative;
+      width: 100%;
+  }
+  .centa {
+      bottom: 0;
+      left: 0;
+      margin: auto;
+      position: absolute;
+      right: 0;
+      top: 0;
+  }
