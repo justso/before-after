@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>test</title>
+  <style>
+  * {
+      background-color: rgba(222, 222, 222, 0.5);
+      border: 1px solid red;
+      box-sizing: border-box;
+      position: relative;
+  }
+  html, body {
+      height: 100%;
+      width: 100%;
+  }
+  html {
+      background-color: black;
+      padding: 1em;
+  }
+  body {
+      background-color: gray;
+      text-align: center;
+  }
+  .cwrap {
+      width: 90%;
+      height: 90%;
+  }
+  .centa, .cwrap > :last-child {
+      position: absolute;
+      margin: auto;
+      bottom: 0;
+      top: 0;
+      left: 0;
+      right: 0;
+  }
+      /* force a size with js */
+  .size1 {
+      display: block;
+      height: 22em;
+      width: 44em;
+  }
+  .size2 {
+      height: 33em;
+      width: 22em;
+  }
+  .size3 {
+      height: 22em;
+      width: 33em;
+  }
+  </style>
+</head>
+<body>
+  <div class="cwrap">a largerish wrapper
+      <div class="size1">an <br> element <br> size1</div>
+      <div class="">any other <br> elements</div>
+      <div class="centa size2">centa <br> size2</div>
+      <span class="size3">last-child <br> size3</span>
+  </div>
+</body>
+</html>
