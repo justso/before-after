@@ -9,18 +9,29 @@ html {
     height: 100%;
 }
 body {
-    background-color: #ddd;
+    background-color: #555;
     height: 100%;
     text-align: center;
+}
+h1 {
+    color: black;
+    font-family: fantasy;
+    text-shadow: 0 0 13px lavenderblush;
+}
+img {
+    max-width: 480px;
+    max-height: 686px;
+}
+/* FUNSTUFF */
+.fill {
+    height: 100%;
+    width: 100%;
 }
 .pwrap {
     background-color: black;
     border-radius: 3em;
     display: inline-block;
     margin: 1em auto;
-    min-width: 33em;
-    min-height: 33em;
-    overflow: hidden;
     position: relative;
     padding: 0.75em;
 }
@@ -46,20 +57,32 @@ body {
 .photo, img {
     float: left;
 }
+.playing {
+    background-color: #666;
+}
+.label {
+    position: absolute;
+    margin: auto;
+    width: 100%;
+    bottom: -2em;
+}
+.playing .label {
+    text-shadow: 1px 2px 3px black;
+}
 
-
+/* GENERIC */
+.cwrap {
+    border: 1px solid black;
+    height: 90%;
+    position: relative;
+    width: 100%;
+}
+.centa {
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
 /* */
-  .cwrap {
-      border: 1px solid lime;
-      height: 90%;
-      position: relative;
-      width: 100%;
-  }
-  .centa {
-      bottom: 0;
-      left: 0;
-      margin: auto;
-      position: absolute;
-      right: 0;
-      top: 0;
-  }
