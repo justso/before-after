@@ -2,14 +2,15 @@
 /*globals window */
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 var W = window,
-C = W.console,
-D = W.document;
+C = W.console;
 W.debug = Number(new Date('2014/07/29') > new Date());
 W.ROOT = ({
-    base: 1, // standard depth; compensate for deeper pages
+    base: 0,
+    // adjust built-in page depth? (e.g. '-1' == '..')
     conf: {
         'localhost:8000': {
-            sub: '/before+after',
+            nom: 'localhost',
+            sub: '/justso/before-after',
         },
     },
     dir: null,
@@ -34,21 +35,19 @@ W.ROOT = ({
         delete R._tops;
     },
     _down: function (R) { // levels relative to host.sub
-        var comp;
-        R.deep = R.doc.slice(1).split('/'); // segment
-        R.deep.pop(); // trim docname
-        comp = R.deep.slice(0, R.base); //  mock top of subproject
-        comp.length && comp.push('') && comp.unshift(''); // slashes
-
-        if (R.base && R.deep.length > R.base) {
-            R.base = R.L.protocol + R.conf.top + R.dir + comp.join('/');
-            R.D.write('<!--  base  -->');
-            R.base && R.D.write('<base href="' + R.base + '">');
-            R.D.write('<!--  ^^^^  -->');
+        R.deep = R.doc.slice(1).split('/'); //  segment
+        R.deep.pop(); //                        trim docname
+        R.comp = R.deep.slice(0, R.base); //    hoist to top of subproject
+        if (R.base && (R.deep.length + R.base) !== 0) {
+            R.comp.length && R.comp.push(''); //slash
+            R.base = R.L.protocol + R.conf.top + R.dir + '/' + R.comp.join('/');
+        } else {
+            delete R.base;
         }
         delete R._down;
     },
     _wrap: function (R) { // write out bootstrap element
+        R.base && R.D.write('<base href="' + R.base + '">');
         R.D.write('<script src="' + R.lib + '/jquery/1.8.2/jquery.js"></script>');
         R.D.write('<script src="' + R.lib + '/modernizr/2.6.2/modernizr.js"></script>');
         R.D.write('<script src="' + R.lib + '/underscore/js-1.4.4/lodash.underscore.js"></script>');
@@ -56,8 +55,11 @@ W.ROOT = ({
         R.D.write('<script src="' + R.lib + '/js/global.js"></script>');
         delete R._wrap;
     },
-    loaded: function () {
+    loaded: function ($) {
         $('body').removeClass('loading');
+        if (W.debug > 0) {
+            $('html').addClass('dev');
+        }
         if (C && C.groupCollapsed) {
             C.groupEnd();
         }
@@ -66,14 +68,14 @@ W.ROOT = ({
         var R = this;
         R.D = W.document;
         R.L = W.location;
-        if (C && C.groupCollapsed) {
-            C.groupCollapsed('ROOT', R);
-        }
         R._host(this);
         R._tops(this);
         R._down(this);
         R._wrap(this);
         delete R.init;
+        if (C && C.groupCollapsed) {
+            C.groupCollapsed('ROOT', R);
+        }
         return R;
     },
 }.init());

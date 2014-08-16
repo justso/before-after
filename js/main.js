@@ -13,7 +13,7 @@ var Main = (function ($) { // IIFE
 
     Df = { // DEFAULTS
         inits: function () {
-            ROOT.loaded();
+            ROOT.loaded($);
             Main = self;
             self.inited = true;
 
