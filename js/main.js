@@ -24,7 +24,7 @@ var Main = (function ($, M, G) { // IIFE
 
             C.log('loaded', name, self, '\nDf', this);
         },
-        pic: '.pwrap',
+        pic: '.frame',
         list: [
             '_main',
             'argentina-1 australia-1',
@@ -59,8 +59,8 @@ var Main = (function ($, M, G) { // IIFE
         me.css({ // force a definite size
             height: me.outerHeight(),
             width: me.outerWidth(),
-        }).addClass('centa');
-        my.addClass('cwrap');
+        }).addClass('center-this');
+        my.addClass('center-wrap');
     }
 
     function _deal(rev) {

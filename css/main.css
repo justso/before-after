@@ -27,7 +27,7 @@ img {
     height: 100%;
     width: 100%;
 }
-.pwrap {
+.frame {
     background-color: black;
     border-radius: 3em;
     display: inline-block;
@@ -35,7 +35,7 @@ img {
     position: relative;
     padding: 0.75em;
 }
-.frame {
+.glow {
     -webkit-filter: blur(4px);
     border: 1em groove lavenderblush;
     border-radius: 3em;
@@ -71,13 +71,13 @@ img {
 }
 
 /* GENERIC */
-.cwrap {
+.center-wrap {
     border: 1px solid black;
     height: 90%;
     position: relative;
     width: 100%;
 }
-.centa {
+.center-this {
     bottom: 0;
     left: 0;
     margin: auto;
