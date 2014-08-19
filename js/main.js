@@ -20,9 +20,9 @@ var Main = (function ($, M, G) { // IIFE
             this.pic = $(this.pic);
             this.img = this.pic.find('img');
             this.lab = $('h1.label');
-            abscent(this.pic);
+            this.list.deal = this.deal.bind(this.list);
 
-            C.log('loaded', name, self, '\nDf', this);
+            C.log(name, 'Df load ', [self, this]);
         },
         pic: '.frame',
         list: [
@@ -47,46 +47,48 @@ var Main = (function ($, M, G) { // IIFE
     function undef() {
         return (typeof arguments[0] === 'undefined');
     }
-    /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
-    /// INTERNAL
 
-    function abscent(ele) {
-        var me, my;
-
-        me = $(ele).wrap('<div>');
-        my = me.parent();
-
-        me.css({ // force a definite size
-            height: me.outerHeight(),
-            width: me.outerWidth(),
-        }).addClass('center-this');
-        my.addClass('center-wrap');
-    }
-
-    function _deal(rev) {
-        if (rev) {
-            Df.list.push(Df.list.shift());
-        } else {
-            Df.list.unshift(Df.list.pop());
-        }
-        return Df.list[0];
-    }
-
-    function pickle(bool) {
-        var nu = _deal(bool);
-
-        Df.img.attr('src', 'export/' + nu + '.jpg');
-        Df.lab.text(nulab(nu));
-    }
-
-    function nulab(nom) {
+    function turnNameToLabel(nom) {
         nom = nom.replace(/[\-\_\d]/g, '');
         nom = nom.split('');
         nom[0] = nom[0].toUpperCase();
         return nom.join('');
     }
 
-    function toggleAuto(play) {
+    Df.deal = function (rev) {
+        if (rev) {
+            this.unshift(this.pop());
+        } else {
+            this.push(this.shift());
+        }
+        return this[0];
+    };
+
+    /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+    /// INTERNAL
+
+    function absoluteCenter(ele) {
+        var me = $(ele).wrap('<div>');
+
+        me.css({ // force a definite size
+            height: me.outerHeight(),
+            width: me.outerWidth(),
+        }).addClass('center-this');
+
+        me.parent().addClass('center-wrap');
+    }
+
+    function pickle(bool) {
+        var nu = Df.list.deal(bool);
+
+        Df.img.attr('src', 'export/' + nu + '.jpg');
+        Df.lab.text(turnNameToLabel(nu));
+    }
+
+    /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+    /// EXPOSED
+
+    function _auto(play) {
         play = undef(play) ? !Df.timer : Boolean(play);
         play = (play << 1) + Boolean(Df.timer);
 
@@ -100,18 +102,19 @@ var Main = (function ($, M, G) { // IIFE
     }
 
     /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+    /// BINDERS
 
     function bindAuto() {
         body.on('click', function (evt) {
-            toggleAuto();
+            _auto();
         });
     }
 
     function bindWheel() {
         body.on('mousewheel', _.debounce(function (evt) {
             var dir = (evt.originalEvent.deltaY > 0);
-            toggleAuto(0);
-            pickle(dir)
+            _auto(0);
+            pickle(dir);
         }, 99, {
             leading:false,
             trailing:false
@@ -123,12 +126,16 @@ var Main = (function ($, M, G) { // IIFE
         bindWheel();
     }
 
+    /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+    /// INITS
+
     function _init() {
         if (self.inited) {
             return null;
         }
         Df.inits();
         bindings();
+        absoluteCenter(Df.pic);
 
         return self;
     }
@@ -138,13 +145,13 @@ var Main = (function ($, M, G) { // IIFE
             return str ? Df[str] : Df;
         },
         init: _init,
-        tog: toggleAuto,
+        tog: _auto,
     });
 
     return $.Deferred().done(self.init);
 }(jQuery, Modernizr, Glob));
 
-$(Main.resolve);
+jQuery(Main.resolve);
 
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
