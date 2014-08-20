@@ -1,8 +1,7 @@
-/*jslint es5:true, white:false */
+/*jslint white:false */
 /*globals _, C, W, ROOT, Global, Modernizr, jQuery,
     Glob:true, Main:true, */
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
-'use strict';
 var Glob = new Global('Glob');
 var Main = (function ($, M, G) { // IIFE
     'use strict';
@@ -39,7 +38,7 @@ var Main = (function ($, M, G) { // IIFE
             'serbia-1 serbia-2 srilanka-1',
             'uk-1 ukraine-1 us-1 us-2',
             'vietnam-1'
-            ].join(' ').split(' ')
+        ].join(' ').split(' '),
     };
     /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
     /// HELPERS
@@ -116,8 +115,8 @@ var Main = (function ($, M, G) { // IIFE
             _auto(0);
             pickle(dir);
         }, 99, {
-            leading:false,
-            trailing:false
+            leading: false,
+            trailing: false
         }));
     }
 
