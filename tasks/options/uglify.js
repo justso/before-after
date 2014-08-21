@@ -1,3 +1,4 @@
+//github.com/gruntjs/grunt-contrib-uglify
 module.exports = {
     options: {
         beautify: true,
