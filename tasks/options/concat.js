@@ -1,7 +1,7 @@
 module.exports = {
     dist: {
         src: [
-        'js/[a-z]*.js',
+        'scripts/[a-z]*.js',
         ],
         dest: 'app/build/src.js',
     },

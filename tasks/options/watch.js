@@ -10,7 +10,7 @@ module.exports = {
         }
     },
     js: {
-        files: ['js/*.js'],
+        files: ['scripts/*.js'],
         tasks: ['jshint', 'concat'],
         options: {
             spawn: false,
