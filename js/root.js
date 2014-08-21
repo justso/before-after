@@ -12,6 +12,10 @@ W.ROOT = ({
             nom: 'localhost',
             sub: '/justso/before-after',
         },
+        'localhost:8001': {
+            nom: 'localhost',
+            sub: '/justso/before-after',
+        },
     },
     dir: null,
     doc: null,
