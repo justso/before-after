@@ -1,9 +1,16 @@
 module.exports = {
     options: {
-    // livereload: true,
+        // livereload: true,
     },
-    scripts: {
-        files: ['js/*.js', 'css/*.css'],
+    app: {
+        files: ['app/*.js'],
+        tasks: ['jshint'],
+        options: {
+            spawn: false,
+        }
+    },
+    js: {
+        files: ['js/*.js'],
         tasks: ['jshint', 'concat'],
         options: {
             spawn: false,

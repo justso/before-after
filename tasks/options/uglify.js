@@ -7,7 +7,7 @@ module.exports = {
     },
     my_target: {
         files: {
-            'build/src.min.js': ['build/src.js']
+            'app/build/src.min.js': ['app/build/src.js']
         }
     },
 };
