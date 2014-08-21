@@ -16,11 +16,11 @@ module.exports = {
             spawn: false,
         }
     },
-//    css: {
-//        files: ['css/*.scss'],
-//        tasks: ['sass', 'autoprefixer', 'cssmin'],
-//        options: {
-//            spawn: false,
-//        }
-//    },
+    css: {
+        files: ['styles/*.scss'],
+        tasks: ['sass'], // 'autoprefixer', 'cssmin'
+        options: {
+            spawn: false,
+        }
+    },
 };

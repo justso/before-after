@@ -1,27 +1,5 @@
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-html {
-    font-size: 10pt;
-    line-height: 1;
-    height: 100%;
-}
-body {
-    background-color: #555;
-    height: 100%;
-    text-align: center;
-}
-h1 {
-    color: black;
-    font-family: fantasy;
-    text-shadow: 0 0 13px lavenderblush;
-}
-img {
-    max-width: 480px;
-    max-height: 686px;
-}
+@import '_all';
+
 /* FUNSTUFF */
 .fill {
     height: 100%;
