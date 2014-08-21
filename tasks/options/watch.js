@@ -22,6 +22,12 @@ module.exports = {
         tasks: ['sass'], // 'autoprefixer', 'cssmin'
         options: {
             spawn: false,
-        }
+        },
+    },
+    html: {
+        files: ['app/*.html'],
+        options: {
+            spawn: false,
+        },
     },
 };
