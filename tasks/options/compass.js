@@ -2,10 +2,10 @@
 module.exports = {
     dist: {
         options: {
-            config: 'config.rb',
-            cssDir: 'app/build',
+            config: 'tasks/config.rb',
             environment: 'development', // production
-            sassDir: 'styles',
+            // cssDir: 'app/build',
+            // sassDir: 'styles',
         },
     },
     // dev: { //  Another target
