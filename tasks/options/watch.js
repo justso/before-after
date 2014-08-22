@@ -18,8 +18,8 @@ module.exports = {
         },
     },
     css: {
-        files: ['styles/*.scss'],
-        tasks: ['sass'], // 'autoprefixer', 'cssmin'
+        files: ['styles/**/*.scss'],
+        tasks: ['compass'], // 'autoprefixer', 'cssmin', 'sass'
         options: {
             spawn: false,
         },
